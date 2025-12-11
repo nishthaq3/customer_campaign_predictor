@@ -6,6 +6,7 @@ A machine learning project that predicts whether a customer will respond positiv
 
 This project uses a Support Vector Machine (SVM) classifier to analyze customer details and predict campaign response (1 = Will Respond, 0 = Not Likely).
 A clean and interactive Streamlit web app allows users to input customer information and get predictions instantly.
+Dataset: KAGGLE [https://www.kaggle.com/datasets/imakash3011/customer-personality-analysis]
 
 >Features
 
