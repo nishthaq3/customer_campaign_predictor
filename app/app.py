@@ -3,16 +3,12 @@ import pandas as pd
 import os
 import joblib
 
-# ----------------------
-# Load model (robust path)
-# ----------------------
+#Load model (robust path)
 current_dir = os.path.dirname(os.path.abspath(__file__))
 model_path = os.path.join(current_dir, "..", "model", "campaign_response_model.pkl")
 model = joblib.load(model_path)
 
-# ----------------------
-# Page config
-# ----------------------
+
 st.set_page_config(
     page_title="🛍️ Customer Campaign Response Predictor",
     page_icon="",
@@ -20,9 +16,8 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# ----------------------
-# CSS Styling (Theme + Sidebar Fix)
-# ----------------------
+#CSS Styling
+
 st.markdown(
     """
     <style>
@@ -114,10 +109,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ----------------------
-# SIDEBAR
-# ----------------------
-st.sidebar.markdown("## 📌 Navigation")  # This will now be WHITE
+st.sidebar.markdown("## 📌 Navigation")  
 
 menu = st.sidebar.selectbox(
     "Choose a section:",
@@ -137,9 +129,6 @@ elif menu == "Know the Model":
 elif menu == "Contact Me":
     st.sidebar.write("**Email:** nishthatripathi05@gmail.com\n\n**GitHub:** github.com/nishthaq3")
 
-# ----------------------
-# Main Title + About
-# ----------------------
 st.markdown("<h1>Customer Campaign Response Predictor🛍️</h1>", unsafe_allow_html=True)
 
 st.markdown(
@@ -152,9 +141,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# ----------------------
-# Input Fields
-# ----------------------
+#Input fields
 st.markdown("### <strong>Enter Customer Details</strong>", unsafe_allow_html=True)
 
 col1, col2 = st.columns(2)
@@ -181,9 +168,6 @@ with col2:
                             [0, 1],
                             key="complain")
 
-# ----------------------
-# Build input data
-# ----------------------
 input_df = pd.DataFrame({
     "Year_Birth": [1980],
     "Education": [education],
@@ -200,9 +184,8 @@ input_df = pd.DataFrame({
     "Complain": [complain]
 })
 
-# ----------------------
-# Prediction
-# ----------------------
+
+#Prediction
 if st.button("Predict Customer Response"):
     result = model.predict(input_df)[0]
     if result == 1:
